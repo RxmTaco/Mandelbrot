@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.zoomValue = new System.Windows.Forms.Label();
+            this.zoomValue = new System.Windows.Forms.TextBox();
+            this.export = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,16 +49,28 @@
             // 
             // zoomValue
             // 
-            this.zoomValue.AutoSize = true;
-            this.zoomValue.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.zoomValue.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.zoomValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.zoomValue.ForeColor = System.Drawing.SystemColors.Control;
-            this.zoomValue.Location = new System.Drawing.Point(0, 967);
-            this.zoomValue.Margin = new System.Windows.Forms.Padding(10);
+            this.zoomValue.Location = new System.Drawing.Point(12, 975);
             this.zoomValue.Name = "zoomValue";
-            this.zoomValue.Padding = new System.Windows.Forms.Padding(10);
-            this.zoomValue.Size = new System.Drawing.Size(53, 33);
-            this.zoomValue.TabIndex = 1;
-            this.zoomValue.Text = "z: 1.0";
+            this.zoomValue.Size = new System.Drawing.Size(100, 13);
+            this.zoomValue.TabIndex = 2;
+            this.zoomValue.Text = "5";
+            this.zoomValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.zoomValue_KeyPress);
+            // 
+            // export
+            // 
+            this.export.FlatAppearance.BorderColor = System.Drawing.Color.Cyan;
+            this.export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.export.ForeColor = System.Drawing.SystemColors.Control;
+            this.export.Location = new System.Drawing.Point(913, 965);
+            this.export.Name = "export";
+            this.export.Size = new System.Drawing.Size(75, 23);
+            this.export.TabIndex = 3;
+            this.export.Text = "EXPORT";
+            this.export.UseVisualStyleBackColor = true;
+            this.export.Click += new System.EventHandler(this.export_Click);
             // 
             // Mandelbrot
             // 
@@ -65,6 +78,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1000, 1000);
+            this.Controls.Add(this.export);
             this.Controls.Add(this.zoomValue);
             this.Controls.Add(this.pictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -81,6 +95,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Label zoomValue;
+        private System.Windows.Forms.TextBox zoomValue;
+        private System.Windows.Forms.Button export;
     }
 }

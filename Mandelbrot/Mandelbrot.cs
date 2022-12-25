@@ -21,7 +21,7 @@ namespace Mandelbrot
 
         int bound = 15;
         int iterations = 200;
-        float zoom = 1.0f;
+        float zoom = 5.0f;
 
         int offsetx = 0;
         int offsety = 0;
@@ -125,18 +125,60 @@ namespace Mandelbrot
             if (e.Delta > 0)
             {
                 zoom += 0.1f;
-                zoomValue.Text = ("z:" + zoom.ToString());
+                zoomValue.Text = (zoom.ToString());
                 zoomValue.Update();
                 DrawMandelbrot(zoom);
             }
             else
             {
                 zoom -= 0.1f;
-                zoomValue.Text = ("z:" + zoom.ToString());
+                zoomValue.Text = (zoom.ToString());
                 zoomValue.Update();
                 DrawMandelbrot(zoom);
             }
             
         }
-}
+
+        private void zoomValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                zoom = float.Parse(zoomValue.Text);
+                zoomValue.Text = (zoom.ToString());
+                zoomValue.Update();
+                DrawMandelbrot(zoom);
+            }
+        }
+
+        private void export_Click(object sender, EventArgs e)
+        {
+            //export image
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Image Files (*.png)|*.png";
+            saveFileDialog.FileName = "Mandelbrot";
+            saveFileDialog.Title = "Save an Image File";
+            saveFileDialog.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog.FileName != "")
+            {
+                // Saves the Image via a FileStream created by the OpenFile method.
+                System.IO.FileStream fs =
+                   (System.IO.FileStream)saveFileDialog.OpenFile();
+                // Saves the Image in the appropriate ImageFormat based upon the
+                // File type selected in the dialog box.
+                // NOTE that the FilterIndex property is one-based.
+                switch (saveFileDialog.FilterIndex)
+                {
+                    case 1:
+                        this.pictureBox.Image.Save(fs,
+                           System.Drawing.Imaging.ImageFormat.Png);
+                        break;
+
+                }
+
+                fs.Close();
+            }
+        }
+    }
 }
