@@ -45,7 +45,7 @@
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Margin = new System.Windows.Forms.Padding(0);
             this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(500, 30);
+            this.Header.Size = new System.Drawing.Size(1000, 30);
             this.Header.TabIndex = 0;
             this.Header.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.Header.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
@@ -53,9 +53,10 @@
             // Minimize
             // 
             this.Minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Minimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.Minimize.FlatAppearance.BorderSize = 0;
             this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Minimize.Location = new System.Drawing.Point(428, 0);
+            this.Minimize.Location = new System.Drawing.Point(928, 0);
             this.Minimize.Margin = new System.Windows.Forms.Padding(0);
             this.Minimize.Name = "Minimize";
             this.Minimize.Size = new System.Drawing.Size(36, 30);
@@ -67,9 +68,10 @@
             // Close
             // 
             this.Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Close.Dock = System.Windows.Forms.DockStyle.Right;
             this.Close.FlatAppearance.BorderSize = 0;
             this.Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Close.Location = new System.Drawing.Point(464, 0);
+            this.Close.Location = new System.Drawing.Point(964, 0);
             this.Close.Margin = new System.Windows.Forms.Padding(0);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(36, 30);
@@ -83,7 +85,7 @@
             this.Container.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Container.Location = new System.Drawing.Point(0, 30);
             this.Container.Name = "Container";
-            this.Container.Size = new System.Drawing.Size(500, 500);
+            this.Container.Size = new System.Drawing.Size(1000, 1000);
             this.Container.TabIndex = 1;
             // 
             // Main
@@ -91,7 +93,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(500, 530);
+            this.ClientSize = new System.Drawing.Size(1000, 1030);
             this.Controls.Add(this.Container);
             this.Controls.Add(this.Header);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
