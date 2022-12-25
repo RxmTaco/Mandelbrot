@@ -96,6 +96,7 @@
             this.Controls.Add(this.Header);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mandelbrot";
             this.Load += new System.EventHandler(this.Main_Load);
             this.Header.ResumeLayout(false);
