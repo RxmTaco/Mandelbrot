@@ -19,9 +19,9 @@ namespace Mandelbrot
     {
         Bitmap bmp = new Bitmap(1000,1000);
 
-        int bound = 15;
+        int bound = 4;
         int iterations = 200;
-        float zoom = 5.0f;
+        float zoom = 2.0f;
 
         int offsetx = 0;
         int offsety = 0;
@@ -54,49 +54,35 @@ namespace Mandelbrot
 
                     while(n < iterations)
                     {
-                        var aa = a * a - b * b;
-                        var bb = 2 * a * b;
+                        var aa = a * a;
+                        var bb = b * b;
 
-                        a = aa + ca;
-                        b = bb + cb;
+                        var twoab = 2 * a * b;
 
-                        if(Math.Abs( a + b ) > bound)
+                        //a = aa - bb - 0.7269m;  //Julia
+                        //b = twoab + 0.1889m;
+
+                        a = aa - bb + ca; //Mandelbrot
+                        b = twoab + cb;
+
+                        if (Math.Abs( a + b ) > bound)
                         {
                             break;
                         }
 
                         n++;
                     }
-
-                    //var R = ExtensionMethods.Map(n, 0, iterations, 0, 255);
-                    //var G = ExtensionMethods.Map(n, 0, iterations, 0, 255);
-                    //var B = ExtensionMethods.Map(n, 0, iterations, 0, 255);
-                    /*
-                    if(n < 0.3f * iterations && n > 0.1f * iterations)
-                    {
-                        R = ExtensionMethods.Map(n, 0, iterations, 100, 255);
-                    }
-                    if (n < 0.6f * iterations && n > 0.3f * iterations)
-                    {
-                        G = ExtensionMethods.Map(n, 0, iterations, 100, 255);
-                    }
-                    if (n < 0.9f * iterations && n > 0.6f * iterations)
-                    {
-                        B = ExtensionMethods.Map(n, 0, iterations, 100, 255);
-                    }
-                    */
+                    
                     var R = (int)((Math.Sin(n * (double)ca) + 1) * 120);
                     var G = (int)((Math.Sin(n * (double)ca + 2.094f) + 1) * 120);
                     var B = (int)((Math.Sin(n * (double)ca + 4.188f) + 1) * 120);
-
-
+                    
                     if (n == iterations)
                     {
                         R = 0;
                         G = 0;
                         B = 0;
                     }
-                    
 
                     bmp.SetPixel(x, y, Color.FromArgb(255, R, G, B));
                 }
@@ -107,7 +93,7 @@ namespace Mandelbrot
 
         private void Mandelbrot_Load(object sender, EventArgs e)
         {
-            
+            zoomValue.Text = zoom.ToString();
         }
 
         private void pictureBox_MouseEnter(object sender, EventArgs e)
